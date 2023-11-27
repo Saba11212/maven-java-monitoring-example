@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // Deploy your Docker container (e.g., run it on a server or orchestrator)
                 // Example: Run the container on the host
-                sh 'docker run -d -p 8080:80 sabababa/maven-app:latest'
+                sh 'docker run -d -p 8081:80 sabababa/maven-app:latest'
             }
         }
     }
