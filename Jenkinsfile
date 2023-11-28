@@ -9,14 +9,16 @@ pipeline {
             }
         }
 
-      stage('Build and Push Docker Image') {
+        stage('Build and Push Docker Image') {
             steps {
                 script {
                     // Build the Docker image
                     def dockerImage = docker.build('sabababa/maven-app:v1')
 
-                    // Push the Docker image to a registry
-                    dockerImage.push()
+                    // Push the Docker image to Dockerhub
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
+                        dockerImage.push()
+                    }
                 }
             }
         }
